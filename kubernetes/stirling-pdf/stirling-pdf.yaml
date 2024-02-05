@@ -3,7 +3,61 @@ kind: Namespace
 metadata:
   name: stirling-pdf
 ---
-stirling-pdf/stirling-pdf-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.26.0 (40646f47)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: stirling-pdf
+  name: stirling-pdf
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: stirling-pdf
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.0 (40646f47)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: stirling-pdf
+    spec:
+      containers:
+        - env:
+            - name: DOCKER_ENABLE_SECURITY
+              value: "false"
+          image: frooodle/s-pdf:latest
+          name: stirling-pdf
+          ports:
+            - containerPort: 8080
+          resources: {}
+          volumeMounts:
+            - mountPath: /usr/share/tesseract-ocr/4.00/tessdata
+              name: stirling-pdf-vol0
+            - mountPath: /configs
+              name: stirling-pdf-vol1
+            - mountPath: /customFiles/
+              name: stirling-pdf-vol2
+      restartPolicy: Always
+      volumes:
+        - name: stirling-pdf-vol0
+          persistentVolumeClaim:
+            claimName: stirling-pdf-vol0
+        - name: stirling-pdf-vol1
+          persistentVolumeClaim:
+            claimName: stirling-pdf-vol1
+        - name: stirling-pdf-vol2
+          persistentVolumeClaim:
+            claimName: stirling-pdf-vol2
+status: {}
+
 ---
 apiVersion: v1
 kind: Service
