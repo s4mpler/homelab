@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  creationTimestamp: '2023-12-20T14:45:15Z'
+  name: npm
+  namespace: nginx-proxy-manager
+spec:
+  rules:
+    - host: npm.kubenet.lan
+      http:
+        paths:
+          - backend:
+              service:
+                name: npm
+                port:
+                  number: 81
+            path: /
+            pathType: Prefix
+status:
+  loadBalancer: {}
