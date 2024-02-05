@@ -69,7 +69,7 @@ spec:
   resources:
     requests:
       storage: 1Gi
-  storageClassName: "longhorn"
+  storageClassName: "longhorn-static"
   volumeName: adguard-pv
 ---
 apiVersion: v1
