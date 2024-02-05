@@ -9,7 +9,8 @@ spec:
     app: gitea
   ports:
   - name: gitea-http
-    port: 3000
+    port: 80
+    targetPort: 3000
   - name: gitea-ssh
     port: 22
   type: LoadBalancer
@@ -28,6 +29,6 @@ spec:
               service:
                 name: gitea-service
                 port:
-                  number: 3000
+                  number: 80
             path: /
             pathType: Prefix
