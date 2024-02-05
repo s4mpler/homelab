@@ -48,32 +48,8 @@ spec:
           volumeMounts:
             - mountPath: /config
               name: bookstack
-        - env:
-            - name: MYSQL_DATABASE
-              value: bookstackapp
-            - name: MYSQL_PASSWORD
-              value: Server_123
-            - name: MYSQL_ROOT_PASSWORD
-              value: Server_123
-            - name: MYSQL_USER
-              value: bookstack
-            - name: PGID
-              value: "1000"
-            - name: PUID
-              value: "1000"
-            - name: TZ
-              value: Europe/Berlin
-          image: ghcr.io/linuxserver/mariadb
-          name: bookstack-db
-      resources: {}
-      volumeMounts:
-        - mountPath: /config
-          name: bookstack-db
   restartPolicy: Always
   volumes:
-    - name: bookstack-db
-      persistentVolumeClaim:
-        claimName: bookstack-db
     - name: bookstack
       persistentVolumeClaim:
         claimName: bookstack
