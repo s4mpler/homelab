@@ -59,20 +59,6 @@ spec:
     path: "/mnt/data/adguard"
 ---
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: adguard-pvc
-  namespace: adguard-home
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-  storageClassName: "longhorn-static"
-  volumeName: adguard-pv
----
-apiVersion: v1
 kind: Service
 metadata:
   name: adguard-service
