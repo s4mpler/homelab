@@ -56,8 +56,6 @@ spec:
         - name: stirling-pdf-vol2
           persistentVolumeClaim:
             claimName: stirling-pdf-vol2
-status: {}
-
 ---
 apiVersion: v1
 kind: Service
@@ -69,6 +67,7 @@ metadata:
   labels:
     io.kompose.service: stirling-pdf
   name: stirling-pdf
+  namespace: stirling-pdf
 spec:
   ports:
     - name: "80"
