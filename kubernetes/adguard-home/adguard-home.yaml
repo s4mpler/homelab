@@ -36,6 +36,9 @@ spec:
         - containerPort: 80 #web gui
           name: http
           protocol: TCP
+        - containerPort: 8443 #web gui
+          name: https
+          protocol: TCP
         volumeMounts:
         - name: adguard-data
           mountPath: /opt/adguardhome/work
