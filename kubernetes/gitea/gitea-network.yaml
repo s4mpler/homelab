@@ -26,7 +26,7 @@ spec:
   tls: 
   - hosts: 
     - gitea.kubenet.lan
-  secretName: gitea-tls-secret
+    secretName: gitea-tls-secret
   rules:
     - host: gitea.kubenet.lan
       http:
