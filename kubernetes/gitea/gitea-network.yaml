@@ -35,6 +35,6 @@ spec:
               service:
                 name: gitea-service
                 port:
-                  number: 9ß
+                  number: 80
             path: /
             pathType: Prefix
