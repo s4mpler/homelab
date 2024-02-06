@@ -13,20 +13,15 @@ spec:
     targetPort: 3000
   - name: gitea-ssh
     port: 22
-  type: ClusterIP
+  type: LoadBalancer
 ---
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: git-tls
+  name: git-ingress
   namespace: gitea-repo
   annotations:
-   #nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
-  # tls: 
-  # - hosts: 
-  #   - gitea.kubenet.lan
-  #   secretName: gitea-tls-secret
   rules:
     - host: gitea.kubenet.lan
       http:
@@ -35,6 +30,6 @@ spec:
               service:
                 name: gitea-service
                 port:
-                  name: gitea-http
+                  number: 80
             path: /
             pathType: Prefix
