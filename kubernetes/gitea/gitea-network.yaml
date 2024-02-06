@@ -8,8 +8,8 @@ spec:
   selector:
     app: gitea
   ports:
-  - name: gitea-http
-    port: 80
+  - name: gitea-https
+    port: 443
     targetPort: 3000
   - name: gitea-ssh
     port: 22
@@ -35,6 +35,6 @@ spec:
               service:
                 name: gitea-service
                 port:
-                  number: 80
+                  number: 443
             path: /
             pathType: Prefix
