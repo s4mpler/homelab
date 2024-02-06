@@ -18,10 +18,20 @@ spec:
 kind: Ingress
 apiVersion: networking.k8s.io/v1
 metadata:
-  name: git-ingress
+  name: git-tls
   namespace: gitea-repo
   annotations:
 spec:
+  tls: 
+  - hosts: 
+    - gitea.kubenet.lan
+  secretName: gitea-tls-secret
+  defaultBackend:
+    service:
+      name: gitea-service
+      port:
+        number: 80
+  ingressClassName: nginx
   rules:
     - host: gitea.kubenet.lan
       http:
