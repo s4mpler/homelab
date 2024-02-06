@@ -38,6 +38,6 @@ spec:
               service:
                 name: gitea-service
                 port:
-                  name: gitea-https
+                  number: 443
             path: /
             pathType: Prefix
