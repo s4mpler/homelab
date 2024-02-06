@@ -24,7 +24,7 @@ metadata:
   name: git-tls
   namespace: gitea-repo
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+   #nginx.ingress.kubernetes.io/ssl-redirect: "true"
 spec:
   tls: 
   - hosts: 
