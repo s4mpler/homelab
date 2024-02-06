@@ -22,10 +22,6 @@ metadata:
   namespace: gitea-repo
   annotations:
 spec:
-  tls: 
-  - hosts: 
-    - gitea.kubenet.lan
-  secretName: gitea-tls-secret
   defaultBackend:
     service:
       name: gitea-service
@@ -43,6 +39,10 @@ spec:
                   number: 80
             path: /
             pathType: Prefix
+  tls: 
+  - hosts: 
+    - gitea.kubenet.lan
+    secretName: gitea-tls-secret
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
